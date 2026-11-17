@@ -14,7 +14,7 @@ MODEL_PATH = os.path.join(RESULTS_DIR, "best_opticalflow.pt")
 
 
 def flow_to_color(flow):
-    """تبدیل optical flow به رنگ برای نمایش"""
+    """Convert optical flow to a colour image for visualisation"""
     h, w = flow.shape[:2]
     flow_image = np.zeros((h, w, 3), dtype=np.uint8)
     

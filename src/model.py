@@ -12,11 +12,11 @@ def conv_block(in_ch, out_ch, kernel_size=3, stride=1, padding=1):
 
 
 class OpticalFlowNet(nn.Module):
-    """شبکه ساده برای تخمین optical flow"""
+    """Simple network for optical flow estimation"""
     def __init__(self):
         super().__init__()
         
-        # Encoder: ۲ فریم (6 کانال) → features
+        # Encoder: 2 frames (6 channels) -> features
         self.conv1 = conv_block(6, 32, stride=2)  # H/2
         self.conv2 = conv_block(32, 64, stride=2)  # H/4
         self.conv3 = conv_block(64, 128, stride=2)  # H/8
@@ -39,7 +39,7 @@ class OpticalFlowNet(nn.Module):
         self.flow_out = nn.Conv2d(16, 2, kernel_size=1)
     
     def forward(self, frames):
-        # frames: (B, 6, H, W) - دو فریم RGB
+        # frames: (B, 6, H, W) - two RGB frames
         
         # Encoder
         x1 = self.conv1(frames)  # (B, 32, H/2, W/2)
