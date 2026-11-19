@@ -4,3 +4,6 @@ data/
 venv/
 .env
 *.pt
+*.state
+checkpoints/
+logs/

@@ -1,0 +1,22 @@
+{
+  "FlowNetS (ours, Chairs)": {
+    "Chairs val EPE": 3.3525705337524414,
+    "KITTI-15 EPE": 21.265395029187204,
+    "KITTI-15 Fl-all (%)": 60.88395118713379
+  },
+  "RAFT-small (ours, Chairs)": {
+    "Chairs val EPE": 2.1036341190338135,
+    "KITTI-15 EPE": 13.269643647521734,
+    "KITTI-15 Fl-all (%)": 42.97061562538147
+  },
+  "RAFT-small, torchvision C+T weights (reference)": {
+    "Chairs val EPE": 2.0432112216949463,
+    "KITTI-15 EPE": 7.585584665238858,
+    "KITTI-15 Fl-all (%)": 25.22369921207428
+  },
+  "RAFT-large, torchvision C+T weights (reference)": {
+    "Chairs val EPE": 1.1557772159576416,
+    "KITTI-15 EPE": 4.514093834832311,
+    "KITTI-15 Fl-all (%)": 16.090591251850128
+  }
+}
