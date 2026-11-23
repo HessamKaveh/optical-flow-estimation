@@ -1,14 +1,16 @@
 # Optical Flow: FlowNetS vs RAFT, trained from scratch on FlyingChairs
 
+[![CI](https://github.com/HessamKaveh/optical-flow-estimation/actions/workflows/ci.yml/badge.svg)](https://github.com/HessamKaveh/optical-flow-estimation/actions/workflows/ci.yml) ![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg) ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c.svg?logo=pytorch&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Two landmark optical-flow architectures are implemented and **trained from scratch** under identical data and augmentation:
 - **FlowNetS** (Dosovitskiy et al., ICCV 2015): a U-Net-style encoder–decoder.
 - **RAFT-small** (Teed & Deng, ECCV 2020): all-pairs correlation volume + recurrent ConvGRU refinement.
 
 Both are trained on the synthetic **FlyingChairs** dataset and then evaluated **zero-shot on real driving scenes (KITTI-2015)**.
 
-<p align="center"><img src="results/flow_examples.png" width="95%"></p>
+<p align="center"><img src="results/hero_sintel_trailer.png" width="95%"></p>
 
-*Top: FlyingChairs validation. Bottom: KITTI-2015 (never seen in training; the ground truth is sparse LiDAR). Colour = flow direction, saturation = magnitude.*
+*Our Chairs-only models on unseen frame pairs from the [Sintel trailer](https://durian.blender.org/) (© Blender Foundation, CC BY 3.0; no ground truth). Colour = direction, saturation = magnitude (one scale per row, wheel inset); RAFT keeps the dragons' shapes where FlowNetS blurs them.*
 
 ## Results
 
@@ -20,6 +22,10 @@ Both are trained on the synthetic **FlyingChairs** dataset and then evaluated **
 | RAFT-large, torchvision weights | Chairs + Things | 1.16 | 4.51 | 16.1 % |
 
 *EPE = mean end-point error in pixels. Fl-all = % of pixels with error > 3 px and > 5 % of the true magnitude. The torchvision rows are external references trained on more data, evaluated with the same code.*
+
+<p align="center"><img src="results/flow_examples.png" width="95%"></p>
+
+*Top: FlyingChairs validation. Bottom: KITTI-2015 (never seen in training; the ground truth is sparse LiDAR). Colour = flow direction, saturation = magnitude.*
 
 **Findings:**
 - **RAFT beats FlowNetS on every metric** (−37 % Chairs EPE, −38 % KITTI EPE), on a smaller step budget. Its 4D correlation volume and iterative refinement are a much stronger inductive bias than a single-pass encoder–decoder.

@@ -7,3 +7,5 @@ venv/
 *.state
 checkpoints/
 logs/
+.pytest_cache/
+.ruff_cache/
